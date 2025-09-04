@@ -1,11 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 @import "tailwindcss";
 
 @theme{
 
+
+    /* Color */
     --color-primary: #6B36D0;
     --color-secondary: #FFF;
     --color-accent: #000;
 
     --color-hover-primary: #50299B;
     --color-variant-primary: #B9A2E6;
+
+    /* Font */
+    --font-heading: "Carter One", serif;
+    --font-title: "Nunito Sans", serif;
+    --font-desc: "Nunito Sans", serif;
+
+    /* Spacing */
+    --spacing-heading: 87px;
+    --spacing-title: 48px;
+    --spacing-desc: 27px
 }
