@@ -1,12 +1,9 @@
-import About from './pages/about/About';
 
 function App() {
   return (
-    <div>
+    <body>
      
-      <About />
-     
-    </div>
+    </body>
   );
 }
 
