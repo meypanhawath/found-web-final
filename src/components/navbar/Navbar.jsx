@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import logo from '../../assets/logo.svg';
+import upperImg from '../../assets/Ellipse.png';
 
 
 const Navbar = () => {
@@ -21,11 +22,15 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   return (
+    <>
+    <img className="absolute -top-70 w-full -z-1" src={upperImg} alt="" />
+    
     <header
       className={`sticky top-10 left-130 w-230 z-20 transition-transform duration-800 ${
         show ? "translate-y-0" : "-translate-y-[150px]"
       }`}
     >
+      
       <nav
         className="max-w-screen-xl mx-auto mb-20 flex items-center justify-between py-5 px-18 rounded-full 
                    bg-white/20 backdrop-blur-xl text-white shadow-lg"
@@ -39,6 +44,7 @@ const Navbar = () => {
         </div>
       </nav>
     </header>
+    </>
   );
 };
 
