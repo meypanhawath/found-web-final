@@ -1,13 +1,11 @@
+import About from "./pages/about/About";
 
-import './App.css'
-
-const App = () => {
-
+function App() {
   return (
-    <>
-      <p className='text-7xl text-center font-medium mt-20'>Testing</p>
-    </>
-  )
+    <body>
+      <About />
+    </body>
+  );
 }
 
-export default App
+export default App;
