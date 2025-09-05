@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 
 const About = () => {
   return (
-    <div className=" h-55 bg-gradient-to-br from-[#BAB5FF] via-[#CEC9FF] to-[#DFDCFF]">
+    <>
       <Navbar />
       <section className=" px-4 py-16">
         <div className="max-w-screen-xl container mx-auto">
@@ -87,7 +87,7 @@ const About = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
