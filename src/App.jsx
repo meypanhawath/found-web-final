@@ -1,13 +1,10 @@
 import Navbar from "./components/navbar/Navbar";
-import About from "./pages/about/About";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
     <body className="bg-smoke">
-      <Navbar />
-      
-    <body>
-      <About />
+      <Home />
     </body>
   );
 }
