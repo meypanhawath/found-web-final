@@ -1,7 +1,7 @@
 
 function App() {
   return (
-    <body>
+    <body className="bg-smoke">
      
     </body>
   );
