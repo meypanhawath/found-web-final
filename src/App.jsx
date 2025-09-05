@@ -1,13 +1,16 @@
 
 import './App.css'
+import CrevoFooter from './components/footer/Footer';
+
+
 
 const App = () => {
 
   return (
-    <>
-      <p className='text-7xl text-center font-medium mt-20'>Testing</p>
-    </>
+   
+ <CrevoFooter/>
+   
   )
 }
 
-export default App
+export default App;
