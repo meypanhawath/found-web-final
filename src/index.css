@@ -20,6 +20,11 @@
     --font-title: "Nunito Sans", serif;
     --font-desc: "Nunito Sans", serif;
 
+    /* Font size */
+    --text-heading: 58px;
+    --text-title: 32px;
+    --text-desc: 18px;
+
     /* Spacing */
     --spacing-heading: 87px;
     --spacing-title: 48px;
