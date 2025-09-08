@@ -32,7 +32,7 @@ const Home = () => {
       <GlassCard width='w-full' height='h-[65vh]' className='max-w-screen-xl container relative mx-auto grid grid-cols-[1.5fr_1fr] bg-white/20 backdrop:blur-xl gap-20 items-center mt-[5%] py-20 px-10 rounded-2xl shadow-2xl shadow-gray-200'>
       <div>
         <h1 className='text-heading font-heading'>Build Your Professional <span className='text-primary'>Portfolio</span> in Minutes </h1>
-        <p className='text-desc font-desc m-desc'>Crevo is redefining website design—its intuitive interface lets you create, manage, and customize your site with ease.</p>
+        <p className='text-desc font-desc my-desc'>Crevo is redefining website design—its intuitive interface lets you create, manage, and customize your site with ease.</p>
         <div className='flex gap-20'>
           <PrimaryBtn>Get started</PrimaryBtn> 
         <SecondaryBtn>Test 1</SecondaryBtn>
