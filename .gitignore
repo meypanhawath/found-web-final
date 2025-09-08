@@ -29,3 +29,7 @@ dist-ssr
 .env.development
 .env.production
 .env.test
+
+
+src/assets/sampleHero.mp4
+src/assets/discord-0.0.108.deb
