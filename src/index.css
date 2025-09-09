@@ -28,5 +28,10 @@
     /* Spacing */
     --spacing-heading: 87px;
     --spacing-title: 48px;
-    --spacing-desc: 27px
+    --spacing-desc: 27px;
+
+
+    /* Animation */
+    --animate-circle1: orbit 8s linear infinite;
+    --animate-circle2: floatCircular2 5s ease-in-out infinite reverse;
 }
