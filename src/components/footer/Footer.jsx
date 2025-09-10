@@ -8,7 +8,7 @@ const CrevoFooter = () => {
     <footer className="bg-gradient-to-r from-purple-100 via-pink-50 to-pink-200 px-5 py-12">
       <div className="max-w-6xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-0 justify-center items-center md:gap-36 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-0 justify-center items-center md:gap-40 mb-12">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-1">
             <section >
@@ -52,8 +52,8 @@ const CrevoFooter = () => {
           </div>
 
           {/* Template Section */}
-          <div className="col-span-1 py-10  p-2 pd-4 ">
-           <div className=" md:text-left mt-6 ">
+          <div className="col-span-1 py-8">
+           <div className="">
              <h3 className="text-lg font-semibold text-gray-700 mb-4 ">
               Template
             </h3>
@@ -84,7 +84,7 @@ const CrevoFooter = () => {
 
           {/* About Us Section */}
           <div className="col-span-1 py-8">
-            <div className="mt-6">
+            <div className="">
                <h3 className="text-lg font-semibold text-gray-700 mb-4">
               About Us
             </h3>
@@ -110,7 +110,7 @@ const CrevoFooter = () => {
 
           {/* Support Section */}
           <div className="col-span-1 py-8">
-            <div className="mt-6">
+            <div className="">
                  <h3 className="text-lg font-semibold text-gray-700 mb-4">
               Support
             </h3>
