@@ -22,7 +22,6 @@ const CrevoFooter = () => {
               </p>
             </section>
 
-            {/* Social Media Icons */}
             <div className="flex space-x-4">
               <a
                 href="#"
@@ -82,7 +81,6 @@ const CrevoFooter = () => {
            </div>
           </div>
 
-          {/* About Us Section */}
           <div className="col-span-1 py-8">
             <div className="">
                <h3 className="text-lg font-semibold text-gray-700 mb-4">
@@ -108,7 +106,7 @@ const CrevoFooter = () => {
            
           </div>
 
-          {/* Support Section */}
+      
           <div className="col-span-1 py-8">
             <div className="">
                  <h3 className="text-lg font-semibold text-gray-700 mb-4">
@@ -136,7 +134,7 @@ const CrevoFooter = () => {
           </div>
         </div>
 
-        {/* Copyright */}
+   
         <div className="text-center border-t border-gray-300 pt-6 Nunito Sans serif">
           <p className="text-black text-sm">Copyright © 2025 Crevo</p>
         </div>
