@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MessageSquare, Bot, User, Send, X } from "lucide-react";
 
-const GEMINI_API_KEY = "AIzaSyAB_RruVTxe_DwIdX6YS6dA-uUHq0W9rzo";
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const GEMINI_API_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" +
   GEMINI_API_KEY;
@@ -80,7 +80,7 @@ export default function ChatBot() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
+          className="fixed bottom-10 right-35 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
         >
           <MessageSquare className="h-6 w-6" />
         </button>
