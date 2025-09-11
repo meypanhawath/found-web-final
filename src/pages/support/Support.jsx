@@ -4,7 +4,7 @@ import { PrimaryBtn } from "../../components/button/Button";
 import ActiveSupport from "../../assets/ActiveSupport.png";
 import GlassBG from "../../components/glass/GlassBG";
 import Logo from "../../assets/logo.svg";
-
+import Footer from "../../components/footer/Footer";
 const Support = () => {
   const [openItems, setOpenItems] = useState(new Set());
   const [formData, setFormData] = useState({
@@ -82,16 +82,7 @@ const Support = () => {
   return (
     <>
       <div className="relative min-h-screen bg-gradient-to-b from-purple-200 via-purple-200 to-pink-100 overflow-hidden">
-        <div
-          className="absolute -top-10 -left-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"
-          style={{ backgroundColor: "#B9A2E6" }}
-        ></div>
-        <div
-          className="absolute bottom-0 right-0 w-96 h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"
-          style={{ backgroundColor: "#E6B3E6" }}
-        ></div>
-
-        {/* Navigation */}
+     
 
         {/* Main Content */}
         <main className="max-w-screen-xl container mx-auto">
@@ -290,6 +281,7 @@ const Support = () => {
             </div>
           </div>
         </main>
+        <Footer />
       </div>
     </>
   );
