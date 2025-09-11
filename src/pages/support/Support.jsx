@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
-import Navbar from "../../components/navbar/Navbar";
 import { PrimaryBtn } from "../../components/button/Button";
 import ActiveSupport from "../../assets/ActiveSupport.png";
 import GlassBG from "../../components/glass/GlassBG";
 import Logo from "../../assets/logo.svg";
+
 const Support = () => {
   const [openItems, setOpenItems] = useState(new Set());
- const [formData, setFormData] = useState({
-  username: '',
-  email: '',
-  message: ''
-});
-const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // FAQ data array
   const faqItems = [
@@ -73,7 +73,6 @@ const [isSubmitting, setIsSubmitting] = useState(false);
     console.log("Form submitted:", formData);
 
     setTimeout(() => {
-    
       setIsSubmitting(false);
       setFormData({ username: "", email: "", message: "" });
       alert("Message sent successfully!");
@@ -93,23 +92,22 @@ const [isSubmitting, setIsSubmitting] = useState(false);
         ></div>
 
         {/* Navigation */}
-        <Navbar />
+
         {/* Main Content */}
         <main className="max-w-screen-xl container mx-auto">
           {/* FAQ Section Header */}
-          <div className="text-center mb-[80px]">
-            <h1 className="text-heading md:text-heading font-title font-medium text-accent my-[5px]">
+          <div className="text-center">
+            <h1 className="text-heading md:text-heading font-title font-medium text-accent my-[50px]">
               HOW CAN WE HELP?
             </h1>
-            <p className="text-[22px] text-gray-800 max-w-2xl mx-auto">
+            <p className="text-[22px] text-gray-800 max-w-2xl mx-auto my-[45px]">
               We may already have the answer for you,
               <br />
               check out the FAQs below
             </p>
           </div>
-
           {/* FAQ Section */}
-          <div className="max-w-9xl mx-auto space-y-4 ">
+          <div className="max-w-9xl mx-auto space-y-4 my-[20px]">
             {faqItems.map((item) => (
               <div
                 key={item.id}
@@ -148,146 +146,143 @@ const [isSubmitting, setIsSubmitting] = useState(false);
               </div>
             ))}
           </div>
+          <div className="min-h-screen flex flex-col">
+            {/* Header Section - Compact */}
+            <div className="text-center py-6 ">
+              <h1 className="text-3xl md:text-4xl font-title font-medium text-accent mb-3">
+                CONTACT US
+              </h1>
+              <p className="text-lg text-gray-800 max-w-2xl mx-auto mb-4">
+                Still have questions? We're here to help!
+                <br />
+                Get in touch with our support team
+              </p>
+              <PrimaryBtn>CHECK OUT OUR FAQs</PrimaryBtn>
+            </div>
 
-          <div className="text-center my-[50px]">
-            <h1 className="text-heading md:text-heading font-title font-medium text-accent mb-6">
-              CONTACT US
-            </h1>
-            <p className="text-[22px] text-gray-800 max-w-2xl mx-auto mb-8">
-              Still have questions? We're here to help!
-              <br />
-              Get in touch with our support team
-            </p>
-            <PrimaryBtn>CHECK OUT OUR FAQs</PrimaryBtn>
-          </div>
-
-          {/* Contact Form Section */}
-          <div className="relative z-10 min-h-screen flex items-center justify-center p-8">
-            <div className="w-full max-w-7xl mx-auto">
-              {/* Grid Layout: Image Left, Form Right */}
-              <div className="grid lg:grid-cols-2 gap-16 items-center">
-                {/* LEFT SIDE - Support Image */}
-                <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-                  <div className="relative">
-                    <img
-                      src={ActiveSupport}
-                      alt="Active Support - Customer service representative"
-                      className="w-full max-w-md rounded-3xl shadow-2xl border-4 border-white border-opacity-20 backdrop-blur-sm"
-                    />
-                  </div>
+            {/* Main Contact Section */}
+            <div className="max-w-screen-xl container mx-auto flex-1 flex items-center justify-center">
+              <div className="relative flex items-center justify-center p-6 border border-white/40 rounded-xl shadow-xl overflow-hidden w-full max-w-6xl">
+                <div className="absolute inset-0 scale-75 opacity-60 h-[500px] w-[800px]">
+                  <GlassBG />
                 </div>
 
-                {/* RIGHT SIDE - Contact Form */}
-                <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-                  <div className="w-[700px] h-auto">
-                    {/* Contact Form Card */}
-                    <div className="bg- bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white border-opacity-20">
-                      {/* Form Header Section */}
-                      <div className="text-center ">
-                        <div className="w-[150px] h-[90px] mx-auto my-[5px]">
-                          <img
-                            src={Logo}
-                            alt="Active Support - Customer service representative"
-                            className="w-full max-w-md rounded-3xl"
-                          />
-                        </div>
+                <div className="relative z-10 w-full">
+                  <div className="grid lg:grid-cols-2 gap-8 items-center">
+                    <div className="flex justify-center lg:justify-end order-2 lg:order-1">
+                      <div className="w-[450px] h-[380px]">
+                        <img
+                          src={ActiveSupport}
+                          alt="Active Support - Customer service representative"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    </div>
 
-                        <h2 className="text-[22px] font-disc text-accent leading-tight my-[20px] drop-shadow-lg">
-                          Feel Free To Share Your Concern!
-                        </h2>
+                    {/* RIGHT SIDE - Contact Form */}
+                    <div className="relative flex items-center justify-center border border-white/40 rounded-xl shadow-xl overflow-hidden order-1 lg:order-2">
+                      <div className="absolute inset-0 scale-90 opacity-60">
+                        <GlassBG />
                       </div>
 
-                      {/* Contact Form */}
-                      <form className="space-y-8" onSubmit={handleSubmit}>
-                        {/* Username Input Field */}
-                        <div>
-                          <label
-                            htmlFor="username"
-                            className="block text-gray-700 font-disc mb-3 text-disc tracking-wider"
-                          >
-                            Username{" "}
-                            <span className="text-gray-500 text-opacity-60">
-                              (required)
-                            </span>
-                          </label>
-                          <input
-                            id="username"
-                            type="text"
-                            name="username"
-                            value={formData.username}
-                            onChange={handleChange}
-                            placeholder="Enter username"
-                            className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-400 border-opacity-30 focus:outline-none focus:border-white focus:border-opacity-80 placeholder-white placeholder-opacity-50 text-white text-lg transition-all duration-300"
-                            required
-                            autoComplete="username"
-                            disabled={isSubmitting}
-                          />
+                      {/* Form content with relative positioning */}
+                      <div className="relative z-10 w-[420px]">
+                        {/* Form Header Section */}
+                        <div className="text-center mb-8">
+                          <div className="w-[90px] h-[54px] mx-auto mb-4">
+                            <img
+                              src={Logo}
+                              alt="Logo"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+
+                          <h2 className="text-2xl font-disc text-gray-800 leading-tight drop-shadow-lg">
+                            Feel Free To Share Your Concern!
+                          </h2>
                         </div>
 
-                        {/* Email Input Field */}
-                        <div>
-                          <label
-                            htmlFor="email"
-                            className="block text-white font-medium mb-3 text-sm uppercase tracking-wider"
-                          >
-                            Email{" "}
-                            <span className="text-white text-opacity-60">
-                              (required)
-                            </span>
-                          </label>
-                          <input
-                            id="email"
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="Enter email"
-                            className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white border-opacity-30 focus:outline-none focus:border-white focus:border-opacity-80 placeholder-white placeholder-opacity-50 text-white text-lg transition-all duration-300"
-                            required
-                            autoComplete="email"
-                            disabled={isSubmitting}
-                          />
-                        </div>
+                        {/* Contact Form */}
+                        <form className="space-y-6" onSubmit={handleSubmit}>
+                          {/* Username Input Field */}
+                          <div>
+                            <label
+                              htmlFor="username"
+                              className="block text-gray-700 font-disc mb-2 text-base tracking-wider"
+                            >
+                              Username{" "}
+                              <span className="text-gray-500 text-opacity-60">
+                                (required)
+                              </span>
+                            </label>
+                            <input
+                              id="username"
+                              type="text"
+                              name="username"
+                              value={formData.username}
+                              onChange={handleChange}
+                              placeholder="Enter username"
+                              className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-400/30 focus:outline-none focus:border-gray-400/80 placeholder-gray-400/50 text-gray-700 text-base transition-all duration-300"
+                              required
+                              autoComplete="username"
+                              disabled={isSubmitting}
+                            />
+                          </div>
 
-                        {/* Message Textarea Field */}
-                        <div>
-                          <label
-                            htmlFor="message"
-                            className="block text-white font-medium mb-3 text-sm uppercase tracking-wider"
-                          >
-                            Message{" "}
-                            <span className="text-white text-opacity-60">
-                              (required)
-                            </span>
-                          </label>
-                          <textarea
-                            id="message"
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            placeholder="Share your thoughts..."
-                            rows={4}
-                            className="w-full px-6 py-4 bg-white bg-opacity-10 border-2 border-white border-opacity-20 rounded-2xl focus:outline-none focus:border-white focus:border-opacity-50 focus:bg-opacity-15 placeholder-white placeholder-opacity-50 text-white resize-none transition-all duration-300 backdrop-blur-sm"
-                            required
-                            disabled={isSubmitting}
-                          />
-                        </div>
+                          {/* Email Input Field */}
+                          <div>
+                            <label
+                              htmlFor="email"
+                              className="block text-gray-700 font-disc mb-2 text-base tracking-wider"
+                            >
+                              Email{" "}
+                              <span className="text-gray-500 text-opacity-60">
+                                (required)
+                              </span>
+                            </label>
+                            <input
+                              id="email"
+                              type="email"
+                              name="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              placeholder="Enter email"
+                              className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-400/30 focus:outline-none focus:border-gray-400/80 placeholder-gray-400 text-gray-700 text-base transition-all duration-300"
+                              required
+                              autoComplete="email"
+                              disabled={isSubmitting}
+                            />
+                          </div>
 
-                        {/* Submit Button */}
-                        <div className="text-center pt-6">
-                          <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className={`${
-                              isSubmitting
-                                ? "opacity-50 cursor-not-allowed"
-                                : ""
-                            } bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-4 px-16 rounded-full transition-all duration-300 shadow-2xl hover:shadow-purple-500/25 transform hover:-translate-y-1 hover:scale-105 border border-white border-opacity-20`}
-                          >
-                            {isSubmitting ? "Sending..." : "Send Message"}
-                          </button>
-                        </div>
-                      </form>
+                          {/* Message Textarea Field */}
+                          <div>
+                            <label
+                              htmlFor="message"
+                              className="block text-gray-700 font-disc text-base tracking-wider"
+                            >
+                              Message{" "}
+                              <span className="text-gray-500 text-opacity-60">
+                                (required)
+                              </span>
+                            </label>
+                            <textarea
+                              id="message"
+                              name="message"
+                              value={formData.message}
+                              onChange={handleChange}
+                              placeholder="Message"
+                              rows={4}
+                              className="w-full mt-2 px-4 py-3 backdrop-blur-sm bg-white/10 border-2 border-gray-400/20 rounded-xl focus:outline-none focus:border-gray-400/50 focus:bg-white/15 placeholder-gray-400/50 text-gray-700 text-base resize-none transition-all duration-300"
+                              required
+                              disabled={isSubmitting}
+                            />
+                          </div>
+                          {/* Submit Button */}
+                          <div className="text-center pb-2">
+                            <PrimaryBtn>Send</PrimaryBtn>
+                          </div>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>

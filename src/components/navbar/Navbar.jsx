@@ -1,11 +1,27 @@
 import { useState, useEffect } from "react";
-import logo from '../../assets/logo.svg';
-import upperImg from '../../assets/Ellipse.png';
-
+import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import logo from "../../assets/logo.svg";
+import upperImg from "../../assets/Ellipse.png";
 
 const Navbar = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,28 +38,86 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   return (
-    <header className="bg-transparent">
-    <img className="absolute -top-70 w-full -z-1" src={upperImg} alt="" />
-    
-    <nav
-      className={`sticky top-10 left-130 w-230 z-20 transition-transform duration-800 ${
-        show ? "translate-y-0" : "-translate-y-[150px]"
-      }`}
-    >
-      
-      <div
-        className="max-w-screen-xl mx-auto mb-20 flex items-center justify-between py-5 px-18 rounded-full 
-                   bg-smoke/10 backdrop-blur-xl text-white shadow-lg"
+    <header className="relative z-30">
+      {/* Background image */}
+      <img
+        className="absolute -top-72 w-full -z-10 opacity-90"
+        src={upperImg}
+        alt="background"
+      />
+
+      {/* Navbar */}
+      <nav
+        className={`sticky top-6 transition-transform duration-700 ${
+          show ? "translate-y-0" : "-translate-y-40"
+        }`}
       >
-        <img className="w-24 transition duration-500 hover:scale-105 cursor-pointer" src={logo} alt="logo" />
-        <div className="flex space-x-12 items-center">
-          <h2 className="cursor-pointer text-white hover:text-primary text-xl font-medium transition duration-500 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary hover:scale-105">Templates</h2>
-          <h2 className="cursor-pointer text-white hover:text-primary text-xl font-medium transition duration-500 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary hover:scale-105">About Us</h2>
-          <h2 className="cursor-pointer text-white hover:text-primary text-xl font-medium transition duration-500 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary hover:scale-105">Support</h2>
-          <button className="bg-primary text-white text-xl font-medium py-3 px-8 rounded-2xl cursor-pointer transition duration-500 hover:shadow-[inset_120px_0_0_0_#50299B]">Log in</button>
+        <div
+          className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4 rounded-full
+          bg-white/10 backdrop-blur-xl text-white shadow-lg border border-white/20"
+        >
+          {/* Logo */}
+          <img
+            className="w-20 cursor-pointer transition-transform duration-300 hover:scale-110"
+            src={logo}
+            alt="logo"
+            onClick={() => navigate("/")}
+          />
+
+          {/* Links */}
+          <div className="flex items-center gap-10">
+            {["Templates", "About Us", "Support"].map((item) => (
+              <h2
+                key={item}
+                className="cursor-pointer text-lg font-medium transition-all duration-300 
+                hover:text-primary hover:underline hover:underline-offset-4 hover:scale-105"
+                onClick={() =>
+                  navigate(`/${item.toLowerCase().replace(" ", "")}`)
+                }
+              >
+                {item}
+              </h2>
+            ))}
+
+            {/* Auth buttons */}
+            {user ? (
+              <div className="flex items-center gap-4">
+                <div
+                  className="flex items-center gap-2 cursor-pointer group"
+                  onClick={() => navigate("/profile")}
+                >
+                  {user.photoURL && (
+                    <img
+                      src={user.photoURL}
+                      alt="profile"
+                      className="w-10 h-10 rounded-full border border-primary 
+                      group-hover:ring-2 group-hover:ring-primary transition-all duration-300"
+                    />
+                  )}
+                  <span className="text-white font-medium group-hover:underline">
+                    {user.displayName || user.email}
+                  </span>
+                </div>
+                <button
+                  className="px-6 py-2 rounded-xl text-lg font-medium bg-red-500 
+                  hover:bg-red-600 transition-all duration-300 hover:scale-105 shadow-md"
+                  onClick={handleLogout}
+                >
+                  Log out
+                </button>
+              </div>
+            ) : (
+              <button
+                className="px-6 py-2 rounded-xl text-lg font-medium bg-primary 
+                hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-md"
+                onClick={() => navigate("/auth/login")}
+              >
+                Log in
+              </button>
+            )}
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
     </header>
   );
 };
