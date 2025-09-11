@@ -4,6 +4,7 @@ import { PrimaryBtn } from "../../components/button/Button";
 import ActiveSupport from "../../assets/ActiveSupport.png";
 import Logo from "../../assets/logo.svg";
 import ChatBot from "../../components/chat/ChatBot";
+import GlassBG from "../../components/glass/GlassBG";
 import emailjs from "@emailjs/browser";
 
 const Support = () => {
@@ -95,185 +96,204 @@ const Support = () => {
         style={{ backgroundColor: "#E6B3E6" }}
       />
 
-      <main className="max-w-screen-xl container mx-auto">
-        {/* Header Section */}
-        <header className="text-center mb-[80px]">
-          <h1 className="text-heading md:text-heading font-title font-medium text-accent my-[5px]">
-            HOW CAN WE HELP?
-          </h1>
-          <p className="text-[22px] text-gray-800 max-w-2xl mx-auto">
-            We may already have the answer for you, <br /> check out the FAQs
-            below
-          </p>
-        </header>
+        {/* Navigation */}
 
-        {/* FAQ Section */}
-        <section
-          aria-labelledby="faq-section"
-          className="max-w-9xl mx-auto space-y-4"
-        >
-          {faqItems.map((item) => (
-            <article
-              key={item.id}
-              className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary"
-            >
-              <button
-                onClick={() => toggleItem(item.id)}
-                className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-white hover:bg-opacity-50 rounded-2xl transition-all duration-200"
-                aria-expanded={openItems.has(item.id)}
-              >
-                <span className="text-lg font-medium text-gray-800 pr-4">
-                  {item.question}
-                </span>
-                <div className="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center transition-all duration-200 hover:bg-purple-200">
-                  {openItems.has(item.id) ? (
-                    <Minus className="w-4 h-4 text-purple-600" />
-                  ) : (
-                    <Plus className="w-4 h-4 text-purple-600" />
-                  )}
-                </div>
-              </button>
-
+        {/* Main Content */}
+        <main className="max-w-screen-xl container mx-auto">
+          {/* FAQ Section Header */}
+          <div className="text-center">
+            <h1 className="text-heading md:text-heading font-title font-medium text-accent my-[50px]">
+              HOW CAN WE HELP?
+            </h1>
+            <p className="text-[22px] text-gray-800 max-w-2xl mx-auto my-[45px]">
+              We may already have the answer for you,
+              <br />
+              check out the FAQs below
+            </p>
+          </div>
+          {/* FAQ Section */}
+          <div className="max-w-9xl mx-auto space-y-4 my-[20px]">
+            {faqItems.map((item) => (
               <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openItems.has(item.id)
-                    ? "max-h-[500px] opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                key={item.id}
+                className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-7 border-primary"
               >
-                <div className="px-8 pb-6 pt-2">
-                  <p className="text-gray-700 leading-relaxed">{item.answer}</p>
+                <button
+                  onClick={() => toggleItem(item.id)}
+                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-white hover:bg-opacity-50 rounded-2xl transition-all duration-200"
+                  aria-expanded={openItems.has(item.id)}
+                >
+                  <span className="text-lg font-medium text-gray-800 pr-4">
+                    {item.question}
+                  </span>
+                  <div className="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center transition-all duration-200 hover:bg-purple-200">
+                    {openItems.has(item.id) ? (
+                      <Minus className="w-4 h-4 text-purple-600" />
+                    ) : (
+                      <Plus className="w-4 h-4 text-purple-600" />
+                    )}
+                  </div>
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    openItems.has(item.id)
+                      ? "max-h-[500px] opacity-100"
+                      : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="px-8 pb-6 pt-2">
+                    <p className="text-gray-700 leading-relaxed">{item.answer}</p>
+                  </div>
                 </div>
               </div>
-            </article>
-          ))}
-        </section>
+            ))}
+          </div>
+          <div className="min-h-screen flex flex-col">
+            {/* Header Section - Compact */}
+            <div className="text-center py-6 ">
+              <h1 className="text-3xl md:text-4xl font-title font-medium text-accent mb-3">
+                CONTACT US
+              </h1>
+              <p className="text-lg text-gray-800 max-w-2xl mx-auto mb-4">
+                Still have questions? We're here to help!
+                <br />
+                Get in touch with our support team
+              </p>
+              <PrimaryBtn>CHECK OUT OUR FAQs</PrimaryBtn>
+            </div>
 
-        {/* Contact Section */}
-        <section
-          aria-labelledby="contact-section"
-          className="text-center my-[50px]"
-        >
-          <h2 className="text-heading md:text-heading font-title font-medium text-accent mb-6">
-            CONTACT US
-          </h2>
-          <p className="text-[22px] text-gray-800 max-w-2xl mx-auto mb-8">
-            Still have questions? We're here to help! <br /> Get in touch with
-            our support team
-          </p>
-          <PrimaryBtn>CHECK OUT OUR FAQs</PrimaryBtn>
-        </section>
-
-        {/* Contact Form Section */}
-        <section className="relative z-10 min-h-screen flex items-center justify-center p-8 bg-gradient-to-tr from-purple-100 via-purple-200 to-purple-300">
-          <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            {/* Illustration */}
-            <figure className="flex justify-center lg:justify-start order-2 lg:order-1">
-              <img
-                src={ActiveSupport}
-                alt="Customer Support"
-                className="w-full max-w-sm"
-              />
-            </figure>
-
-            {/* Contact Form */}
-            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="w-full max-w-lg bg-white bg-opacity-60 backdrop-blur-2xl rounded-2xl p-10 shadow-xl border border-white/20">
-                <div className="text-center">
-                  <img
-                    src={Logo}
-                    alt="Logo"
-                    className="w-28 h-16 mx-auto mb-4"
-                  />
-                  <h3 className="text-xl font-semibold text-gray-800 mb-6">
-                    Feel Free To Share Your Concern!
-                  </h3>
+            {/* Main Contact Section */}
+            <div className="max-w-screen-xl container mx-auto flex-1 flex items-center justify-center">
+              <div className="relative flex items-center justify-center p-6 border border-white/40 rounded-xl shadow-xl overflow-hidden w-full max-w-6xl">
+                <div className="absolute inset-0 scale-75 opacity-60 h-[500px] w-[800px]">
+                  <GlassBG />
                 </div>
 
-                <form className="space-y-6" onSubmit={handleSubmit}>
-                  <div>
-                    <label
-                      htmlFor="username"
-                      className="block text-gray-700 font-medium mb-2"
-                    >
-                      Username{" "}
-                      <span className="text-gray-400 text-sm">(required)</span>
-                    </label>
-                    <input
-                      id="username"
-                      type="text"
-                      name="username"
-                      value={formData.username}
-                      onChange={handleChange}
-                      placeholder="Enter username"
-                      className="w-full px-4 py-3 bg-transparent border-b border-gray-400 focus:border-purple-600 outline-none placeholder-gray-400 text-gray-800"
-                      required
-                      disabled={isSubmitting}
-                    />
-                  </div>
+                <div className="relative z-10 w-full">
+                  <div className="grid lg:grid-cols-2 gap-8 items-center">
+                    <div className="flex justify-center lg:justify-end order-2 lg:order-1">
+                      <div className="w-[450px] h-[380px]">
+                        <img
+                          src={ActiveSupport}
+                          alt="Active Support - Customer service representative"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    </div>
 
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-gray-700 font-medium mb-2"
-                    >
-                      Email{" "}
-                      <span className="text-gray-400 text-sm">(required)</span>
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Enter email"
-                      className="w-full px-4 py-3 bg-transparent border-b border-gray-400 focus:border-purple-600 outline-none placeholder-gray-400 text-gray-800"
-                      required
-                      disabled={isSubmitting}
-                    />
-                  </div>
+                    {/* RIGHT SIDE - Contact Form */}
+                    <div className="relative flex items-center justify-center border border-white/40 rounded-xl shadow-xl overflow-hidden order-1 lg:order-2">
+                      <div className="absolute inset-0 scale-90 opacity-60">
+                        <GlassBG />
+                      </div>
 
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-gray-700 font-medium mb-2"
-                    >
-                      Message{" "}
-                      <span className="text-gray-400 text-sm">(required)</span>
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Message"
-                      rows={4}
-                      className="w-full px-4 py-3 bg-transparent border-b border-gray-400 focus:border-purple-600 outline-none placeholder-gray-400 text-gray-800 resize-none"
-                      required
-                      disabled={isSubmitting}
-                    />
-                  </div>
+                      {/* Form content with relative positioning */}
+                      <div className="relative z-10 w-[420px]">
+                        {/* Form Header Section */}
+                        <div className="text-center mb-8">
+                          <div className="w-[90px] h-[54px] mx-auto mb-4">
+                            <img
+                              src={Logo}
+                              alt="Logo"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
 
-                  <div className="text-center">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className={`${
-                        isSubmitting
-                          ? "opacity-50 cursor-not-allowed"
-                          : "hover:scale-105 hover:shadow-lg"
-                      } px-10 py-3 bg-purple-600 text-white rounded-full font-medium transition-all duration-300`}
-                    >
-                      {isSubmitting ? "Sending..." : "Send"}
-                    </button>
+                          <h2 className="text-2xl font-disc text-gray-800 leading-tight drop-shadow-lg">
+                            Feel Free To Share Your Concern!
+                          </h2>
+                        </div>
+
+                        {/* Contact Form */}
+                        <form className="space-y-6" onSubmit={handleSubmit}>
+                          {/* Username Input Field */}
+                          <div>
+                            <label
+                              htmlFor="username"
+                              className="block text-gray-700 font-disc mb-2 text-base tracking-wider"
+                            >
+                              Username{" "}
+                              <span className="text-gray-500 text-opacity-60">
+                                (required)
+                              </span>
+                            </label>
+                            <input
+                              id="username"
+                              type="text"
+                              name="username"
+                              value={formData.username}
+                              onChange={handleChange}
+                              placeholder="Enter username"
+                              className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-400/30 focus:outline-none focus:border-gray-400/80 placeholder-gray-400/50 text-gray-700 text-base transition-all duration-300"
+                              required
+                              autoComplete="username"
+                              disabled={isSubmitting}
+                            />
+                          </div>
+
+                          {/* Email Input Field */}
+                          <div>
+                            <label
+                              htmlFor="email"
+                              className="block text-gray-700 font-disc mb-2 text-base tracking-wider"
+                            >
+                              Email{" "}
+                              <span className="text-gray-500 text-opacity-60">
+                                (required)
+                              </span>
+                            </label>
+                            <input
+                              id="email"
+                              type="email"
+                              name="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              placeholder="Enter email"
+                              className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-gray-400/30 focus:outline-none focus:border-gray-400/80 placeholder-gray-400 text-gray-700 text-base transition-all duration-300"
+                              required
+                              autoComplete="email"
+                              disabled={isSubmitting}
+                            />
+                          </div>
+
+                          {/* Message Textarea Field */}
+                          <div>
+                            <label
+                              htmlFor="message"
+                              className="block text-gray-700 font-disc text-base tracking-wider"
+                            >
+                              Message{" "}
+                              <span className="text-gray-500 text-opacity-60">
+                                (required)
+                              </span>
+                            </label>
+                            <textarea
+                              id="message"
+                              name="message"
+                              value={formData.message}
+                              onChange={handleChange}
+                              placeholder="Message"
+                              rows={4}
+                              className="w-full mt-2 px-4 py-3 backdrop-blur-sm bg-white/10 border-2 border-gray-400/20 rounded-xl focus:outline-none focus:border-gray-400/50 focus:bg-white/15 placeholder-gray-400/50 text-gray-700 text-base resize-none transition-all duration-300"
+                              required
+                              disabled={isSubmitting}
+                            />
+                          </div>
+                          {/* Submit Button */}
+                          <div className="text-center pb-2">
+                            <PrimaryBtn>Send</PrimaryBtn>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </main>
-
       {/* Floating ChatBot */}
       <div className="fixed bottom-6 right-6 z-50">
         <ChatBot />
