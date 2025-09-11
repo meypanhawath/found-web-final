@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
-import Navbar from "../../components/navbar/Navbar";
 import { PrimaryBtn } from "../../components/button/Button";
 import ActiveSupport from "../../assets/ActiveSupport.png";
-import GlassBG from "../../components/glass/GlassBG";
 import Logo from "../../assets/logo.svg";
 import ChatBot from "../../components/chat/ChatBot";
+import emailjs from "@emailjs/browser";
 
 const Support = () => {
   const [openItems, setOpenItems] = useState(new Set());
@@ -65,13 +64,23 @@ const Support = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    console.log("Form submitted:", formData);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({ username: "", email: "", message: "" });
-      alert("Message sent successfully!");
-    }, 2000);
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formData,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        setIsSubmitting(false);
+        setFormData({ username: "", email: "", message: "" });
+        alert("Message sent successfully!");
+      })
+      .catch(() => {
+        setIsSubmitting(false);
+        alert("Failed to send message. Please try again.");
+      });
   };
 
   return (
@@ -106,7 +115,7 @@ const Support = () => {
           {faqItems.map((item) => (
             <article
               key={item.id}
-              className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-7 border-primary"
+              className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary"
             >
               <button
                 onClick={() => toggleItem(item.id)}
@@ -239,7 +248,7 @@ const Support = () => {
                       onChange={handleChange}
                       placeholder="Message"
                       rows={4}
-                      className="w-full px-4 py-3 bg-white/40 border border-gray-300 rounded-lg focus:border-purple-600 outline-none placeholder-gray-400 text-gray-800 resize-none"
+                      className="w-full px-4 py-3 bg-transparent border-b border-gray-400 focus:border-purple-600 outline-none placeholder-gray-400 text-gray-800 resize-none"
                       required
                       disabled={isSubmitting}
                     />
@@ -266,7 +275,7 @@ const Support = () => {
       </main>
 
       {/* Floating ChatBot */}
-      <div className="absolute z-10">
+      <div className="fixed bottom-6 right-6 z-50">
         <ChatBot />
       </div>
     </div>
