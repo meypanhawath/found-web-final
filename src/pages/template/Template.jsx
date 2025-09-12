@@ -116,7 +116,7 @@ const Template = () => {
               />
             </section>
           </section>
-          <section className="absolute w-fit items-center-safe mt-10">
+          <section className="absolute w-fit  mt-10">
             <PrimaryBtn>
               Templates
             </PrimaryBtn>
