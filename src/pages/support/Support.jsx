@@ -85,30 +85,9 @@ const Support = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-purple-200 via-purple-200 to-pink-100 overflow-hidden">
-      {/* Background Effects */}
-      <div
-        className="absolute -top-10 -left-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"
-        style={{ backgroundColor: "#B9A2E6" }}
-      />
-      <div
-        className="absolute bottom-0 right-0 w-96 h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"
-        style={{ backgroundColor: "#E6B3E6" }}
-      />
-
-      {/* Main Content */}
-      <main className="max-w-screen-xl container mx-auto">
-        {/* FAQ Section Header */}
-        <div className="text-center">
-          <h1 className="text-heading md:text-heading font-title font-medium text-accent my-[50px]">
-            HOW CAN WE HELP?
-          </h1>
-          <p className="text-[22px] text-gray-800 max-w-2xl mx-auto my-[45px]">
-            We may already have the answer for you,
-            <br />
-            check out the FAQs below
-          </p>
-        </div>
+    <>
+      <div className="relative min-h-screen bg-gradient-to-b from-purple-200 via-purple-200 to-pink-100 overflow-hidden">
+     
 
         {/* FAQ Section */}
         <div className="max-w-9xl mx-auto space-y-4 my-[20px]">
@@ -288,12 +267,8 @@ const Support = () => {
               </div>
             </div>
           </div>
-        </div>
-      </main>
-
-      {/* ChatBot */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <ChatBot />
+        </main>
+        <Footer />
       </div>
     </div>
   );
