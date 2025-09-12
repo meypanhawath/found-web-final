@@ -1,5 +1,5 @@
 import React from 'react'
-import upperImg from '../../assets/upperImg.png'
+// import upperImg from '../../assets/upperImg.png'
 import Navbar from '../../components/navbar/Navbar'
 
 import '../../App.css'
@@ -10,13 +10,16 @@ import { PrimaryBtn, SecondaryBtn } from '../../components/button/Button'
 import VantaBackground from '../../components/backgroundEffect/HaloBackground'
 import VantaClouds from '../../components/backgroundEffect/CloudBackground'
 import BirdBackground from '../../components/backgroundEffect/BirdBackground'
+import GlassBackground from '../../components/glass/GlassBackground'
 
 const Home = () => {
   return (
     <>
+    
     {/* <video autoPlay loop muted className='absolute w-full h-full object-cover z-1'>
       <source src={sampleVid} type="video/mp4" />
     </video> */}
+    
     <GlassBG />
     <section className="h-[100vh] relative overflow-hidden bg-smoke">
       
@@ -26,8 +29,8 @@ const Home = () => {
   {/* Content without blur */}
   <div className="relative z-10">
     
-    <Navbar />
-    <img className='absolute -top-10 w-full -z-1 blur-2xl' src={upperImg} alt="" />
+    
+    {/* <img className='absolute -top-10 w-full -z-1 blur-2xl' src={upperImg} alt="" /> */}
     
       <GlassCard width='w-full' height='h-[65vh]' className='max-w-screen-xl container relative mx-auto grid grid-cols-[1.5fr_1fr] bg-white/20 backdrop:blur-xl gap-20 items-center mt-[5%] py-20 px-10 rounded-2xl shadow-2xl shadow-gray-200'>
       <div>
@@ -48,6 +51,7 @@ const Home = () => {
         {/* <div className='w-50 h-50 backdrop-blur-xl bg-white/10 border border-white/20 transition-all hover:scale-105 hover:shadow-[inset_120px_0_0_0_#50299B] duration-500'></div> */}
       </div>
       </GlassCard>
+      
     
   </div>
 </section>
