@@ -12,7 +12,7 @@ import { SecondaryBtn } from "../../components/button/Button";
 const Template = () => {
   return (
     <>
-      <section className="relative h-screen overflow-hidden bg-primary/60">
+      <section className="relative h-screen overflow-hidden bg-primary/30">
         <div className="absolute left-150 top-20 w-150 h-150 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
         <section className="min-h-screen relative overflow-hidden">
           <Navbar/>
