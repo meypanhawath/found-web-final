@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
-import { PrimaryBtn } from "../../components/button/Button";
-import ActiveSupport from "../../assets/ActiveSupport.png";
-import Logo from "../../assets/logo.svg";
-import ChatBot from "../../components/chat/ChatBot";
-import GlassBG from "../../components/glass/GlassBG";
-import Footer from "../../components/footer/Footer"; // ✅ make sure this exists
-import Contact from "./Contact";
+import { PrimaryBtn } from "../../components/button/Button"; // ✅ make sure this file exports PrimaryBtn
+import ActiveSupport from "../../assets/ActiveSupport.png"; // ✅ check if this image exists
+import Logo from "../../assets/logo.svg"; // ✅ check file path
+import ChatBot from "../../components/chat/ChatBot"; // ✅ check if ChatBot.jsx exists
+import GlassBG from "../../components/glass/GlassBG"; // ✅ check if GlassBG.jsx exists
+import Footer from "../../components/footer/Footer"; // ✅ confirm Footer.jsx exists
+import Contact from "./Contact"; // ✅ confirm Contact.jsx exists in same folder
 
 const Support = () => {
   const [openItems, setOpenItems] = useState(new Set());
@@ -47,7 +47,11 @@ const Support = () => {
   const toggleItem = (id) => {
     setOpenItems((prev) => {
       const newSet = new Set(prev);
-      newSet.has(id) ? newSet.delete(id) : newSet.add(id);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
       return newSet;
     });
   };
@@ -55,7 +59,7 @@ const Support = () => {
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-purple-200 via-purple-200 to-pink-100 overflow-hidden">
       {/* FAQ Section */}
-      <div className="max-w-9xl mx-auto space-y-4 my-[20px]">
+      <div className="max-w-5xl mx-auto space-y-4 my-10 px-4">
         {faqItems.map((item) => (
           <div
             key={item.id}
@@ -95,6 +99,12 @@ const Support = () => {
       {/* Contact Section */}
       <Contact />
 
+      {/* ChatBot Section */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <ChatBot />
+      </div>
+
+      {/* Footer Section */}
       <Footer />
     </div>
   );
