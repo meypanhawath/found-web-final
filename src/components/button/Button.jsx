@@ -3,7 +3,7 @@ import React from 'react';
 function Btn({
   children,
   padding = "px-10 py-5",
-  rounded = "rounded-xl",
+  rounded = "rounded-full",
   bgColor = "bg-primary",
   hoverBgColor = "hover:bg-hover-primary",
   textColor = "text-white",
@@ -41,7 +41,7 @@ export function PrimaryBtn(props) {
 }
 
 export function SecondaryBtn(props) {
-  return <Btn {...props} bgColor="bg-tranparent" hoverBgColor="hover:bg-gray-100" textColor="text-primary" borderColor='border-2 border-primary' />;
+  return <Btn {...props} bgColor="bg-transparent" hoverBgColor="hover:bg-gray-100" textColor="text-primary" borderColor='border-2 border-primary' />;
 }
 
 export function DangerBtn(props) {
