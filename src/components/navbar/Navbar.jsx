@@ -1,13 +1,29 @@
 import { useState, useEffect } from "react";
-import logo from '../../assets/logo.svg';
-import DarkMode from "../darkMode/DarkMode";
-import { Menu, X } from 'lucide-react'; // You'll need to install lucide-react or use any hamburger icon
-import GlassCard from "../glass/GlassCard";
+import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+// import logo from "../../assets/logo.svg";
+import logoV2 from "../../assets/logoV2.png"
+import GlassBG from "../glass/GlassBG";
+// import upperImg from "../../assets/Ellipse.png";
 
 const Navbar = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,104 +39,98 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+  // const toggleMobileMenu = () => {
+  //   setMobileMenuOpen(!mobileMenuOpen);
+  // };
 
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-  };
+  // const closeMobileMenu = () => {
+  //   setMobileMenuOpen(false);
+  // };
 
   return (
-    <header className="bg-transparent">
-      {/* Desktop Navbar */}
+    <>
+    
+    <header className="relative z-30">
+      {/* Background image */}
+      {/* <img
+        className="absolute -top-72 w-full -z-10 opacity-90"
+        src={upperImg}
+        alt="background"
+      /> */}
+
+      {/* Navbar */}
       <nav
-        className={`my-4 md:my-10 sticky top-4 md:top-20 mx-auto w-full z-20 px-4 md:px-30 transition-transform duration-800 ${
-          show ? "translate-y-0" : "-translate-y-[150px]"
+        className={`sticky top-6 transition-transform duration-700 ${
+          show ? "translate-y-0" : "-translate-y-40"
         }`}
       >
-        {/* Desktop Navigation */}
-        <div className="hidden lg:block">
-          <div
-            className="w-200 h-20 max-w-7xl grid grid-cols-[1fr_5fr_0.3fr_1.3fr] gap-x-5 mx-auto items-center py-2 px-5 rounded-full
-                       backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl hover:shadow-xl transition-all duration-500"
-          >
-            <img className="w-20 xl:w-24 transition duration-500 hover:scale-105 cursor-pointer" src={logo} alt="logo" />
-            <div className="flex text-center gap-6 xl:gap-10 items-center justify-center">
-              <h2 className="cursor-pointer text-primary hover:text-primary text-sm font-medium transition duration-500 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary hover:scale-105">Templates</h2>
-              <h2 className="cursor-pointer text-primary hover:text-primary text-sm font-medium transition duration-500 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary hover:scale-105">About Us</h2>
-              <h2 className="cursor-pointer text-primary hover:text-primary text-sm font-medium transition duration-500 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary hover:scale-105">Support</h2>
-            </div>
-            <DarkMode />
-            <GlassCard width="w-full" height="h-10">
-              <span className="text-primary font-medium">Log in</span>
-            </GlassCard>
-            {/* <button className="bg-primary text-white text-sm font-medium py-3 px-6 xl:px-8 rounded-2xl cursor-pointer transition duration-500 hover:shadow-[inset_120px_0_0_0_#50299B]">Log in</button> */}
-          </div>
-        </div>
+        <div
+          className="max-w-7xl w-250 pt-12 mx-auto flex items-center justify-between px-8 py-4 rounded-full
+          bg-white/10 backdrop-blur-xl shadow-lg border border-white/20"
+        >
+          {/* Logo */}
+          <img
+            className="w-50 cursor-pointer transition-transform duration-300 hover:scale-110"
+            src={logoV2}
+            alt="logo"
+            onClick={() => navigate("/")}
+          />
 
-        {/* Tablet Navigation */}
-        <div className="hidden md:block lg:hidden">
-          <div
-            className="w-full max-w-4xl flex items-center justify-between mx-auto py-3 px-6 rounded-full
-                       backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl hover:shadow-xl transition-all duration-500"
-          >
-            <img className="w-16 transition duration-500 hover:scale-105 cursor-pointer" src={logo} alt="logo" />
-            <div className="flex gap-8 items-center">
-              <h2 className="cursor-pointer text-primary hover:text-primary text-sm font-medium transition duration-500 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary hover:scale-105">Templates</h2>
-              <h2 className="cursor-pointer text-primary hover:text-primary text-sm font-medium transition duration-500 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary hover:scale-105">About</h2>
-              <h2 className="cursor-pointer text-primary hover:text-primary text-sm font-medium transition duration-500 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary hover:scale-105">Support</h2>
-            </div>
-            <div className="flex items-center gap-4">
-              <DarkMode />
-              <button className="bg-primary text-white text-sm font-medium py-2 px-6 rounded-2xl cursor-pointer transition duration-500 hover:shadow-[inset_120px_0_0_0_#50299B]">Login</button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div className="block md:hidden">
-          <div
-            className="w-full flex items-center justify-between mx-auto py-3 px-4 rounded-2xl
-                       backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl transition-all duration-500"
-          >
-            <img className="w-12 transition duration-500 hover:scale-105 cursor-pointer" src={logo} alt="logo" />
-            <div className="flex items-center gap-3">
-              <DarkMode />
-              <button
-                onClick={toggleMobileMenu}
-                className="p-2 rounded-lg backdrop-blur-lg bg-white/10 border border-white/20 text-primary transition-colors duration-300 hover:bg-white/20"
-                aria-label="Toggle mobile menu"
+          {/* Links */}
+          <div className="flex items-center gap-10">
+            {["Templates", "About", "Support"].map((item) => (
+              <h2
+                key={item}
+                className="cursor-pointer text-lg font-medium transition-all duration-300 text-primary 
+                hover:text-hover-primary hover:underline hover:underline-offset-4 hover:scale-105"
+                onClick={() =>
+                  navigate(`/${item.toLowerCase().replace(" ", "")}`)
+                }
               >
-                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
+                {item}
+              </h2>
+            ))}
 
-          {/* Mobile Menu Overlay */}
-          {mobileMenuOpen && (
-            <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm" onClick={closeMobileMenu}>
-              <div 
-                className="absolute top-20 right-4 left-4 bg-white/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-6"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex flex-col space-y-4">
-                  <h2 className="cursor-pointer text-primary hover:text-primary text-base font-medium transition duration-300 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary py-2 border-b border-gray-200/30" onClick={closeMobileMenu}>Templates</h2>
-                  <h2 className="cursor-pointer text-primary hover:text-primary text-base font-medium transition duration-300 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary py-2 border-b border-gray-200/30" onClick={closeMobileMenu}>About Us</h2>
-                  <h2 className="cursor-pointer text-primary hover:text-primary text-base font-medium transition duration-300 hover:decoration-2 hover:underline hover:underline-offset-5 hover:decoration-primary py-2 border-b border-gray-200/30" onClick={closeMobileMenu}>Support</h2>
-                  <button 
-                    className="bg-primary text-white text-base font-medium py-3 px-6 rounded-2xl cursor-pointer transition duration-500 hover:shadow-[inset_120px_0_0_0_#50299B] mt-4 w-full" 
-                    onClick={closeMobileMenu}
-                  >
-                    Log in
-                  </button>
+            {/* Auth buttons */}
+            {user ? (
+              <div className="flex items-center gap-4">
+                <div
+                  className="flex items-center gap-2 cursor-pointer group"
+                  onClick={() => navigate("/profile")}
+                >
+                  {user.photoURL && (
+                    <img
+                      src={user.photoURL}
+                      alt="profile"
+                      className="w-10 h-10 rounded-full border border-primary 
+                      group-hover:ring-2 group-hover:ring-primary transition-all duration-300"
+                    />
+                  )}
+                  <span className="text-white font-medium group-hover:underline">
+                    {user.displayName || user.email}
+                  </span>
                 </div>
+                <button
+                  className="px-6 py-2 rounded-xl text-lg font-medium bg-red-500 
+                  hover:bg-red-600 transition-all duration-300 hover:scale-105 shadow-md"
+                  onClick={handleLogout}
+                >
+                  Log out
+                </button>
               </div>
-            </div>
-          )}
+            ) : (
+              <button
+                className="px-6 py-2 text-white cursor-pointer rounded-xl text-lg font-medium bg-primary hover:shadow-[inset_100px_0_0_0_#fff] transition-all duration-400 hover:scale-110 hover:bg-transparent hover:text-primary hover:outline-2 hover:outline-primary"
+                onClick={() => navigate("/auth/login")}
+              >
+                Log in
+              </button>
+            )}
+          </div>
         </div>
       </nav>
     </header>
+    </>
   );
 };
 
