@@ -8,13 +8,13 @@ import { GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider } from "fi
 // import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAKIf4ldz4d_F8yD7tqGMGNsdBKWfcnOTA",
-  authDomain: "testauth-1f758.firebaseapp.com",
-  projectId: "testauth-1f758",
-  storageBucket: "testauth-1f758.appspot.com",
-  messagingSenderId: "111263712725",
-  appId: "1:111263712725:web:6ea1ac0be4e88c2a82695c",
-  measurementId: "G-L2KQJNZ24K",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

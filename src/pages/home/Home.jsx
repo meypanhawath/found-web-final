@@ -25,10 +25,9 @@ const Home = () => {
           />
         </div>
       </section>
-      {/* Floating ChatBot in bottom right */}
-      <div className="fixed bottom-6 right-6 z-50 shadow-2xl">
-        <ChatBot />
-      </div>
+
+      
+  
     </>
   );
 };

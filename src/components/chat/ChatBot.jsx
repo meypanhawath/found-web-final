@@ -1,12 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MessageSquare, Bot, User, Send, X } from "lucide-react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-const GEMINI_API_KEY = "AIzaSyAB_RruVTxe_DwIdX6YS6dA-uUHq0W9rzo";
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const GEMINI_API_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" +
   GEMINI_API_KEY;
 
 export default function ChatBot() {
+  const [user, setUser] = useState(null);
+  const [authChecked, setAuthChecked] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setAuthChecked(true);
+    });
+    return () => unsubscribe();
+  }, []);
   const [messages, setMessages] = useState([
     {
       role: "bot",
@@ -74,13 +87,38 @@ export default function ChatBot() {
     }
   };
 
+  if (!authChecked) return null;
+
+  // Not logged in: show floating button, but clicking it prompts login/register
+  if (!user) {
+    return (
+      <>
+        <button
+          onClick={() => {
+            if (
+              window.confirm(
+                "You must be logged in to use the AI Assistant. Go to login/register?"
+              )
+            ) {
+              navigate("/auth/login");
+            }
+          }}
+          className="fixed bottom-10 right-35 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
+        >
+          <MessageSquare className="h-6 w-6" />
+        </button>
+      </>
+    );
+  }
+
+  // User is logged in: show normal chat UI
   return (
     <>
       {/* ✅ Floating Button */}
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
+          className="fixed bottom-10 right-35 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
         >
           <MessageSquare className="h-6 w-6" />
         </button>
