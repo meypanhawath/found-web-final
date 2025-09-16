@@ -10,6 +10,7 @@
     --color-primary: #6B36D0;
     --color-secondary: #FFF;
     --color-accent: #000;
+    --color-smoke: #F5F5F5;
 
     --color-hover-primary: #50299B;
     --color-variant-primary: #B9A2E6;
@@ -19,8 +20,19 @@
     --font-title: "Nunito Sans", serif;
     --font-desc: "Nunito Sans", serif;
 
+    /* Font size */
+    --text-heading: 68px;
+    --text-title: 48px;
+    --text-desc: 20px;
+
     /* Spacing */
     --spacing-heading: 87px;
     --spacing-title: 48px;
-    --spacing-desc: 27px
+    --spacing-desc: 27px;
+
+
+    /* Animation */
+    --animate-circle1: orbit 8s linear infinite;
+    --animate-circle2: floatCircular2 5s ease-in-out infinite reverse;
 }
+
