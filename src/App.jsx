@@ -7,33 +7,31 @@ import Register from "./pages/auth/Register";
 import About from "./pages/about/About";
 import Support from "./pages/support/Support";
 import Template from "./pages/template/Template";
-// import Template2 from "./components/templatePortfolio/Template2";
+import Template1 from "./components/templatePortfolio/Template1";
 
-import './App.css'
-import CrevoFooter from './components/footer/Footer';
+import "./App.css";
+import CrevoFooter from "./components/footer/Footer";
 
 const App = () => {
-
   return (
-    <Router>
-      <div className="bg-smoke min-h-screen">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/register" element={<Register />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/templates" element={<Template />} />
-          {/* <Route path="/profolio2" element={<Template2 />} /> */}
-          {/* Optionally, add a 404 Not Found route */}
-          {/* <Route path="*" element={<NotFound />} /> */}
-        </Routes>
-      </div>
-    
-    </Router>
-     
+    // <Router>
+    //   <div className="bg-smoke min-h-screen">
+    //     <Navbar />
+    //     <Routes>
+    //       <Route path="/" element={<Home />} />
+    //       <Route path="/auth/login" element={<Login />} />
+    //       <Route path="/auth/register" element={<Register />} />
+    //       <Route path="/about" element={<About />} />
+    //       <Route path="/support" element={<Support />} />
+    //       <Route path="/templates" element={<Template />} />
+    //       <Route path="/template1" element={<Template1 />} />
+    //       {/* Optionally, add a 404 Not Found route */}
+    //       {/* <Route path="*" element={<NotFound />} /> */}
+    //     </Routes>
+    //   </div>
+    // </Router>
+     <Template1/>
   );
-}
+};
 
 export default App;
