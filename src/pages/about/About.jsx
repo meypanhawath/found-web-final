@@ -2,6 +2,7 @@ import React from "react";
 import Endy from "../../assets/Endy.png";
 import Yanut from "../../assets/Yanut.png";
 import Navbar from "../../components/navbar/Navbar";
+import Pencil from "../../assets/pencil.svg";
 
 const About = () => {
   return (
@@ -11,25 +12,12 @@ const About = () => {
         <div className="max-w-screen-xl container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <svg
-                className="w-10 h-10 text-accent 0 mb-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                />
-              </svg>
-
-              <h1 className="text-5xl font-bold text-accent mb-4">
+              <img src={Pencil} alt="Pencil image" />
+              <h1 className="text-heading font-heading text-accent mb-4">
                 Who Are <span className="text-purple-800">We ?</span>
               </h1>
 
-              <h2 className="text-3xl font-bold text-accent mb-6">
+              <h2 className="text-title font-bold text-accent mb-6">
                 Modern Portfolio
               </h2>
 
