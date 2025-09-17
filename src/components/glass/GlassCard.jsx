@@ -14,8 +14,8 @@ function GlassCard({
   return (
     <div className="">
       <div
-        className={`${width} ${height} ${borderRadius} ${duration} ${animation} ${delay} ${className} backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl shadow-black/20 transition-all hover:scale-105 cursor-pointer flex items-center justify-center overflow-hidden group ${
-          children ? "p-6" : ""
+        className={`${width} ${height} ${borderRadius} ${duration} ${animation} ${delay} ${className} backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl shadow-black/20 transition-all hover:scale-100 cursor-pointer flex items-center justify-center overflow-hidden group ${
+          children ? "" : ""
         }`}
       >
         {children}

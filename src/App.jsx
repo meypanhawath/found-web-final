@@ -8,7 +8,7 @@ import Register from "./pages/auth/Register";
 function App() {
   return (
     <Router>
-      <div className="bg-smoke min-h-screen">
+      <div className="bg-[#f5f5f5] min-h-screen">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

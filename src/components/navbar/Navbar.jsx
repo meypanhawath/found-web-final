@@ -65,12 +65,12 @@ const Navbar = () => {
         }`}
       >
         <div
-          className="max-w-7xl w-250 pt-12 mx-auto flex items-center justify-between px-8 py-4 rounded-full
+          className="max-w-7xl w-250 mx-auto absolute left-115 top-10 flex items-center justify-between px-8 py-4 rounded-full
           bg-white/10 backdrop-blur-xl shadow-lg border border-white/20"
         >
           {/* Logo */}
           <img
-            className="w-50 cursor-pointer transition-transform duration-300 hover:scale-110"
+            className="w-50 cursor-pointer transition-transform duration-300 hover:scale-105"
             src={logoV2}
             alt="logo"
             onClick={() => navigate("/")}
@@ -82,7 +82,7 @@ const Navbar = () => {
               <h2
                 key={item}
                 className="cursor-pointer text-lg font-medium transition-all duration-300 text-primary 
-                hover:text-hover-primary hover:underline hover:underline-offset-4 hover:scale-105"
+                hover:text-hover-primary hover:underline hover:underline-offset-4 hover:scale-105 hover:translate-y-[-10%]"
                 onClick={() =>
                   navigate(`/${item.toLowerCase().replace(" ", "")}`)
                 }
@@ -106,12 +106,12 @@ const Navbar = () => {
                       group-hover:ring-2 group-hover:ring-primary transition-all duration-300"
                     />
                   )}
-                  <span className="text-white font-medium group-hover:underline">
+                  <span className="text-primary font-medium group-hover:underline">
                     {user.displayName || user.email}
                   </span>
                 </div>
                 <button
-                  className="px-6 py-2 rounded-xl text-lg font-medium bg-red-500 
+                  className="text-white cursor-pointer px-6 py-2 rounded-full text-lg font-medium bg-red-500 
                   hover:bg-red-600 transition-all duration-300 hover:scale-105 shadow-md"
                   onClick={handleLogout}
                 >
@@ -120,7 +120,7 @@ const Navbar = () => {
               </div>
             ) : (
               <button
-                className="px-6 py-2 text-white cursor-pointer rounded-xl text-lg font-medium bg-primary hover:shadow-[inset_100px_0_0_0_#fff] transition-all duration-400 hover:scale-110 hover:bg-transparent hover:text-primary hover:outline-2 hover:outline-primary"
+                className="px-6 py-2 text-white cursor-pointer rounded-full text-lg font-medium bg-primary hover:shadow-[inset_100px_0_0_0_#FFFFFF00] outline-2 outline-primary transition-all duration-400 hover:scale-110 hover:bg-transparent hover:text-primary  hover:outline-2 hover:outline-primary"
                 onClick={() => navigate("/auth/login")}
               >
                 Log in
