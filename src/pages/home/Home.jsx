@@ -16,7 +16,16 @@ import selectIcon from "../../assets/select-icon.png";
 import customizeIcon from "../../assets/customize-icon.png";
 import yellowStar from "../../assets/home-yellow-star.png";
 import homeSection5 from "../../assets/home-section5-bg.png";
+import happyCustomer from '../../assets/happy-customer.png'
+import ellipseTestimony from "../../assets/ellipse-testimony.png";
+import profile1 from "../../assets/profile-user1.jpg";
+import profile2 from "../../assets/profile-user2.jpg";
+import profile3 from "../../assets/profile-user3.png";
 // import sampleImg from '../../assets/Endy.png'
+
+// Icon Import
+import { FaStar } from "react-icons/fa";
+
 
 import "../../App.css";
 import GlassCard from "../../components/glass/GlassCard";
@@ -407,10 +416,108 @@ const Home = () => {
       <section className="h-[70vh] mt-20">
         <div className="max-w-screen-xl container mx-auto relative">
             <img className="w-full h-full rounded-2xl" src={homeSection5} alt="" />
-            <div className="w-200 h-50 bg-white rounded-2xl absolute bottom-0">Join 15 million users</div>
-            <p>who grow their business with Odoo</p>
+            <img className="absolute top-50 left-185 z-10" src={happyCustomer} alt="" />
+            <div className="w-200 h-50 bg-white absolute bottom-40 left-60 rounded-full flex flex-col justify-center">
+                <h2 className="text-center font-accent font-bold text-heading">Join 15 million users</h2>
+                <p className="text-center font-desc text-xl">who grow their business with Odoo</p>
+            </div>
             
         </div>
+      </section>
+
+
+      {/* Section 6 */}
+      <section className="h-[100vh]">
+        <div className="max-w-screen-xl container mx-auto">
+
+          <h2 className="text-heading font-heading text-center">From Vision to Reality</h2>
+          <p className="text-center font-desc text-xl">Discover why professionals choose Crevo to design, showcase, and grow their online presence.</p>
+        </div>
+
+        <div className="bg-white h-[60vh] mt-10 relative overflow-hidden">
+            <img className="w-200 absolute -bottom-50 -left-50" src={ellipseTestimony} alt="" />
+            <img className="w-150 absolute -bottom-60 right-10" src={ellipseTestimony} alt="" />
+            <img className="w-80 absolute top-10 right-120" src={ellipseTestimony} alt="" />
+            <img className="w-150 absolute bottom-20 -right-40" src={ellipseTestimony} alt="" />
+
+            <div className="flex gap-10 justify-center mt-30">
+              
+                <GlassCard width="w-120" height="h-65" className="px-10 py-5 flex flex-col justify-center">
+                <div className="flex gap-2 w-full">
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                </div>
+                  <p className="text-lg font-desc italic font-bold">"Profoly is a 10x solution for $0. It simply makes other options obsolete."</p>
+                  <div className="w-full flex gap-5 items-center">
+                    <img className="w-20 h-20 rounded-full mt-5" src={profile1} alt="" />
+                    <div className="text-md font-title font-bold flex flex-col">
+                      <h3>- Elon mask</h3>
+                      <p className="font-normal ml-3">CEO of Tesla & SpaceX</p>
+                    </div>
+                  </div>
+                </GlassCard>
+
+                <GlassCard width="w-120" height="h-65" className="px-10 py-5 flex flex-col justify-center">
+                <div className="flex gap-2 w-full">
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                </div>
+                  <p className="text-lg font-desc italic font-bold">"I got a professional portfolio. They got... whatever it is they get. The price was right."</p>
+                  <div className="w-full flex gap-5 items-center">
+                    <img className="w-20 h-20 rounded-full mt-5" src={profile2} alt="" />
+                    <div className="text-md font-title font-bold flex flex-col">
+                      <h3>- Creed Bratton</h3>
+                      <p className="font-normal ml-3">Quality Assurance</p>
+                    </div>
+                  </div>
+                </GlassCard>
+
+                <GlassCard width="w-120" height="h-65" className="px-10 py-5 flex flex-col justify-center">
+                <div className="flex gap-2 w-full">
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                  <FaStar className="text-3xl mb-3 fill-yellow-300"/>
+                </div>
+                  <p className="text-lg font-desc italic font-bold">"It's actually FREE? My nephew's portfolio looks like a crorepati made it! Very good!"</p>
+                  <div className="w-full flex gap-5 items-center">
+                    <img className="w-20 h-20 rounded-full mt-5" src={profile3} alt="" />
+                    <div className="text-md font-title font-bold flex flex-col">
+                      <h3>- Xavier Wilson</h3>
+                      <p className="font-normal ml-3">Supportive Uncle & Advisor</p>
+                    </div>
+                  </div>
+                </GlassCard>
+              
+
+            </div>
+          </div>
+      </section>
+
+
+      {/* Section 7 */}
+      <section className="h-[100vh]">
+        <div className="max-w-screen-xl container mx-auto">
+          <h2 className="text-heading font-heading text-center">Your Questions, Answered.</h2>
+          <p className="text-center text-xl font-desc">Find clear, helpful answers to the most common questions about Profoly, so you can focus on creating your perfect portfolio without the guesswork.</p>
+        </div>
+        <div className="h-[60vh] bg-gray-200 mt-10 relative">
+            <Circle width="w-7" height="h-7" className="absolute top-80 left-20 bg-purple-700 blur-md" />
+            <Circle width="w-7" height="h-7" className="absolute top-20 left-120 bg-pink-600 blur-md" />
+            <Circle width="w-7" height="h-7" className="absolute bottom-20 left-220 bg-yellow-300 blur-md" />
+            <Circle width="w-7" height="h-7" className="absolute top-40 left-320 bg-green-700 blur-md" />
+            <Circle width="w-7" height="h-7" className="absolute top-80 left-420 bg-blue-700 blur-md" />
+          
+        </div>
+
+        
       </section>
 
       {/* <section className="h-[100vh] bg-green-700">
