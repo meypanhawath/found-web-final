@@ -3,7 +3,6 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import homeSection2 from "../../assets/homeSection2.png";
 import sampleHomeHero from "../../assets/sampleHomeHero.png";
-import sampleVid from "../../assets/sampleVid2.mp4";
 import templateSectionBG from "../../assets/home-template-section-bg.png";
 import templateSection1 from "../../assets/home-template-section1.png";
 import templateSection2 from "../../assets/home-template-section2.png";
@@ -23,10 +22,7 @@ import GlassCard from "../../components/glass/GlassCard";
 import GlassBG from "../../components/glass/GlassBG";
 import Test from "../../components/glass/Test";
 import { PrimaryBtn, SecondaryBtn } from "../../components/button/Button";
-import VantaBackground from "../../components/backgroundEffect/HaloBackground";
-import VantaClouds from "../../components/backgroundEffect/CloudBackground";
-import BirdBackground from "../../components/backgroundEffect/BirdBackground";
-import GlassBackground from "../../components/glass/GlassBackground";
+
 import Circle from "../../components/decoration/circle/Circle";
 // import Footer from "../../components/footer/Footer";
 
