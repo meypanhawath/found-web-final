@@ -21,6 +21,7 @@ const Home = () => {
     </video> */}
     
     <GlassBG />
+    <Navbar />
     <section className="h-[100vh] relative overflow-hidden bg-smoke">
       
   {/* Background with blur */}

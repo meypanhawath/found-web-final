@@ -14,14 +14,15 @@ const App = () => {
   return (
     <Router>
       <div className="bg-smoke min-h-screen">
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </div>
     </Router>
+    
   );
 }
 
