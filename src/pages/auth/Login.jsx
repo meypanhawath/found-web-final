@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import GlassBG from "../../components/glass/GlassBG";
 import {
-  signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
@@ -11,8 +10,10 @@ import { auth } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub, FaFacebook } from "react-icons/fa";
-import loginIllustration from "../../assets/loginimage.png"; // <-- put your uploaded file in assets and import it
+import { FaGithub, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
+import loginIllustration from "../../assets/loginimage.png";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // Zod schema for login
 const loginSchema = z.object({
@@ -26,12 +27,14 @@ export default function LoginForm() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // Handle API Login
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage(null);
@@ -44,21 +47,54 @@ export default function LoginForm() {
 
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, form.email, form.password);
+      const res = await fetch(`${BASE_URL}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: form.email,
+          password: form.password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setMessage(data.message || "Login failed");
+        setLoading(false);
+        return;
+      }
+
+      // Save token and user info for Navbar
+      if (data.token) localStorage.setItem("token", data.token);
+      if (data.user) localStorage.setItem("user", JSON.stringify(data.user));
+
       setMessage("Login successful! Redirecting...");
       setTimeout(() => navigate("/"), 1000);
-    } catch (err) {
-      setMessage(err.message);
+    } catch {
+      setMessage("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
+  // Handle social login with Firebase
   const handleSocialLogin = async (provider) => {
     setLoading(true);
     setMessage(null);
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Save user info to localStorage for Navbar
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          name: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+        })
+      );
+
       setMessage("Login successful! Redirecting...");
       setTimeout(() => navigate("/"), 1000);
     } catch (err) {
@@ -108,32 +144,25 @@ export default function LoginForm() {
           </div>
 
           {/* Password */}
-          <div className="mb-6">
+          <div className="mb-6 relative">
             <label className="block text-sm font-medium text-gray-600">
               Password
             </label>
             <input
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               value={form.password}
               onChange={handleChange}
               placeholder="Enter password"
-              className="w-full border-b-2 border-gray-300 bg-transparent focus:border-purple-500 outline-none py-2"
+              className="w-full border-b-2 border-gray-300 bg-transparent focus:border-purple-500 outline-none py-2 pr-10"
               required
             />
-          </div>
-
-          {/* Options */}
-          <div className="flex items-center justify-between text-sm mb-6">
-            <label className="flex items-center gap-2 cursor-pointer text-gray-600">
-              <input type="checkbox" className="w-4 h-4" /> Keep me signed in
-            </label>
             <button
               type="button"
-              className="text-purple-600 hover:underline"
-              onClick={() => navigate("/forgot-password")}
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-2 top-9 text-gray-500"
             >
-              Forgot password?
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
 
@@ -149,7 +178,7 @@ export default function LoginForm() {
           {/* Divider */}
           <div className="flex items-center my-6">
             <hr className="flex-1 border-gray-300" />
-            <span className="px-3 text-gray-500 text-sm">or</span>
+            <span className="px-3 text-gray-500 text-sm">or login with</span>
             <hr className="flex-1 border-gray-300" />
           </div>
 
@@ -159,6 +188,7 @@ export default function LoginForm() {
               type="button"
               onClick={() => handleSocialLogin(new GoogleAuthProvider())}
               className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-full hover:bg-gray-50 transition"
+              disabled={loading}
             >
               <FcGoogle size={20} /> Google
             </button>
@@ -166,6 +196,7 @@ export default function LoginForm() {
               type="button"
               onClick={() => handleSocialLogin(new GithubAuthProvider())}
               className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-full hover:bg-gray-50 transition"
+              disabled={loading}
             >
               <FaGithub size={20} /> Github
             </button>
@@ -173,12 +204,13 @@ export default function LoginForm() {
               type="button"
               onClick={() => handleSocialLogin(new FacebookAuthProvider())}
               className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-full hover:bg-gray-50 transition text-blue-600"
+              disabled={loading}
             >
               <FaFacebook size={20} /> Facebook
             </button>
           </div>
 
-          {/* Sign up */}
+          {/* Sign up link */}
           <p className="text-center text-sm text-gray-600">
             Don’t have an account?{" "}
             <button
