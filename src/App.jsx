@@ -4,6 +4,10 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import About from "./pages/about/About";
+import Template from "./pages/template/Template";
+import Support from "./pages/support/Support";
+import Profile from "./pages/userprofile/Profile";
 
 function App() {
   return (
@@ -20,9 +24,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
-    
     </Router>
-     
   );
 }
 

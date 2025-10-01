@@ -66,6 +66,8 @@ export default function LoginForm() {
 
       // Save token and user info for Navbar
       if (data.token) localStorage.setItem("token", data.token);
+      if (data.refreshToken)
+        localStorage.setItem("refreshToken", data.refreshToken); // <-- Add this
       if (data.user) localStorage.setItem("user", JSON.stringify(data.user));
 
       setMessage("Login successful! Redirecting...");

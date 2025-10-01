@@ -2,13 +2,11 @@ import React from "react";
 import Endy from "../../assets/Endy.png";
 import Pencil from "../../assets/pencil.svg";
 import Yanut from "../../assets/Yanut.png";
-import Navbar from "../../components/navbar/Navbar";
 import Vision from "../../assets/vision.png";
 
 const About = () => {
   return (
     <>
-      <Navbar />
       <section className="px-4 py-16">
         <div className="max-w-screen-xl container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -76,27 +74,26 @@ const About = () => {
           </div>
         </div>
       </section>
-      
       <section>
-          <div>
+        <div>
           <img src={Vision} alt="" />
-             {/* Vision Content */}
+          {/* Vision Content */}
           <div className="space-y-8">
             <div>
               <h2 className="text-6xl font-bold text-black mb-8 italic">
                 Our Vision
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed text-justify">
-                Our vision is to empower individuals to showcase their skills, creativity, and 
-                achievements through beautiful and professional portfolios. We believe everyone 
-                deserves a space to tell their story and highlight their talents, whether they are 
-                students, professionals, or creators. By providing simple, user-friendly tools, we 
-                make portfolio building accessible, modern, and impactful.
+                Our vision is to empower individuals to showcase their skills,
+                creativity, and achievements through beautiful and professional
+                portfolios. We believe everyone deserves a space to tell their
+                story and highlight their talents, whether they are students,
+                professionals, or creators. By providing simple, user-friendly
+                tools, we make portfolio building accessible, modern, and
+                impactful.
               </p>
             </div>
           </div>
-          
-
         </div>
       </section>
     </>
