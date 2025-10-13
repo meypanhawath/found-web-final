@@ -56,6 +56,10 @@ const ProfileCard = ({ person, isLarge = false }) => (
   </div>
 );
 
+
+
+  
+
 const About = () => {
   const mentors = [
     {
@@ -205,58 +209,18 @@ const About = () => {
               <div className="h-0.5 bg-yellow-200 w-24"></div>
             </div>
           </div>
-
-          <div className="flex items-center justify-between flex-col lg:flex-row">
-            <div className="relative w-80 h-80 lg:w-96 lg:h-96 mb-12 lg:mb-0">
-              <div className="w-full h-full bg-gradient-to-br from-blue-500 to-blue-700 rounded-full relative overflow-hidden">
-                {/* Decorative shapes */}
-                <div className="absolute top-20 left-16">
-                  <div className="w-0 h-0 border-l-[30px] border-l-transparent border-r-[30px] border-r-transparent border-b-[40px] border-b-white opacity-90 transform rotate-45"></div>
-                </div>
-                <div className="absolute top-32 right-20 w-4 h-4 bg-white opacity-70 transform rotate-12"></div>
-                <div className="absolute top-40 right-32 w-3 h-3 bg-white opacity-60 transform rotate-45"></div>
-                <div className="absolute bottom-32 left-20 w-5 h-5 bg-white opacity-50 transform -rotate-12"></div>
-                <div className="absolute bottom-40 left-32 w-2 h-2 bg-white opacity-80"></div>
-                <div className="absolute bottom-0 left-0 w-full h-20">
-                  <div className="absolute bottom-0 left-8 w-16 h-8 bg-white opacity-80 rounded-full"></div>
-                  <div className="absolute bottom-2 left-12 w-12 h-6 bg-white opacity-60 rounded-full"></div>
-                  <div className="absolute bottom-0 right-12 w-20 h-10 bg-white opacity-70 rounded-full"></div>
-                  <div className="absolute bottom-3 right-16 w-8 h-4 bg-white opacity-50 rounded-full"></div>
-                </div>
-              </div>
-
-              {/* Floating Icons with FontAwesome */}
-              <div className="absolute -top-4 right-8 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
-                <FontAwesomeIcon icon={faCamera} className="text-white text-xl" />
-              </div>
-              <div className="absolute top-32 -right-4 w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
-                <FontAwesomeIcon icon={faPaintBrush} className="text-white text-xl" />
-              </div>
-              <div className="absolute bottom-8 -left-4 w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
-                <FontAwesomeIcon icon={faClock} className="text-white text-xl" />
-              </div>
-            </div>
-
-            <div className="flex-1 lg:ml-16 text-center lg:text-left">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                Empower Creativity
-              </h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Make it easy for anyone—creatives, professionals, or
-                freelancers—to showcase their work beautifully without needing
-                design or coding skills.
-              </p>
-            </div>
-          </div>
+          
         </div>
+        
+
       </section>
 
       {/* Mentor + Team Crevo Section */}
-      <div className="bg-gray-50 py-16 px-8">
+      <div className="bg-gray- py-16 px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-heading text-gray-800 mb-8  ">OUR MENTOR</h2>
-            <div className="flex justify-center gap-8 flex-wrap text-left">
+            <div className="flex justify-center gap-8  flex-wrap text-left">
               {mentors.map((mentor, index) => (
                 <ProfileCard key={index} person={mentor} isLarge={true} />
               ))}
